@@ -1,3 +1,9 @@
 <body>
     <h1> HELLO</h1>
+
+<%# <% form_with model:@interventions%> %>
+   <%= form_tag :action => 'update', :id => @some_object %>
+
+    <%= form_tag( { :action => :save, }, { :method => :post }) %>
+
 </body>

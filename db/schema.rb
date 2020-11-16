@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_205613) do
+ActiveRecord::Schema.define(version: 2020_11_16_183848) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -160,6 +160,29 @@ ActiveRecord::Schema.define(version: 2020_11_03_205613) do
     t.bigint "admin_user_id"
     t.string "phone_number"
     t.index ["admin_user_id"], name: "index_employees_on_admin_user_id"
+  end
+
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "author_id"
+    t.bigint "customer_id_id"
+    t.bigint "building_id_id"
+    t.bigint "battery_id_id"
+    t.bigint "column_id_id"
+    t.bigint "elevator_id_id"
+    t.bigint "employee_id_id"
+    t.date "start_date_intervention"
+    t.date "end_date_intervention"
+    t.string "result", default: "incomplete"
+    t.string "report"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["battery_id_id"], name: "index_interventions_on_battery_id_id"
+    t.index ["building_id_id"], name: "index_interventions_on_building_id_id"
+    t.index ["column_id_id"], name: "index_interventions_on_column_id_id"
+    t.index ["customer_id_id"], name: "index_interventions_on_customer_id_id"
+    t.index ["elevator_id_id"], name: "index_interventions_on_elevator_id_id"
+    t.index ["employee_id_id"], name: "index_interventions_on_employee_id_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
