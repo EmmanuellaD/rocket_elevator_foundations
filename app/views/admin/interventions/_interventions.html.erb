@@ -1,8 +1,161 @@
 <body>
-<%= form_with model: @interventions |f| do
-    
-end %>
 
-    
-    
+   <div class="row">
+
+               
+                <!-- MAIN FORM -->
+                <div class="col-md-7 col-sm-7 mt-80">
+                    <form action="" id="quote-form" method="post" enctype="multipart/form-data">
+            
+
+                        <fieldset>
+                        <%# Adding the form fields %>
+						<div id="q7" class="col-md-6" >
+							<label id="q7-label" for="quote_contact_full_name" >Full Name:* </label>
+							<input required type = "text" class="form-control" id="question-7">
+						</div>
+						<div id="q8" class="col-md-6" >
+							<label id="q8-label" for="quote_phone" > </label>
+							<input type="tel" value="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="question-8">
+						</div>
+
+						<div id="q9" class="col-md-6" >
+							<label id="q9-label" for="quote_company_name" >Company Name:* </label>
+							<input required type = "text" class="form-control" id="question-9">
+						</div>
+						<div id="q10" class="col-md-6" >
+							<label id="q10-label" for="quote_contact_email">Email:* </label>
+							<input required type="email" value="" class="form-control" id="question-10" required>
+						</div>                                                   
+
+                            <div class="row justify-content-center mb-10">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label for="building">BUILDING TYPE</label>
+								</div>
+								<div class="col-md-6 ml-20 mr-20">
+                                    <select id="building-type" class="form-control pointer" name="building">
+                                        <option value="Residential">Residential</option>
+                                        <option value="Corporate">Corporate</option>
+                                        <option value="Commercial">Commercial</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="building-confirm-btn" class="row justify-content-center text-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <button type="button" style="width: 100%" class="btn btn-primary"><i class="fa fa-check"></i>CONFIRM</button>
+                                </div>
+                            </div>
+                            <div id="q1" class="row justify-content-center" style="display: none;">
+                                    <div class="col-md-6 ml-20 mr-20">
+                                        <label id="q1-label" for="question-1"></label>
+                                        <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-1" id="question-1">
+                                    </div>
+                            </div>
+
+                            <div id="q2" class="row justify-content-center" style="display: none;">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label id="q2-label" for="question-2"></label>
+                                    <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-2" id="question-2">
+                                </div>
+                            </div>
+
+                            <div id="q3" class="row justify-content-center" style="display: none;">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label id="q3-label" for="question-3"></label>
+                                    <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-3" id="question-3">
+                                </div>
+                            </div>
+
+                            <div id="q4" class="row justify-content-center" style="display: none;">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label id="q4-label" for="question-4"></label>
+                                    <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-4" id="question-4">
+                                </div>
+                            </div> 
+
+                            <div id="q5" class="row justify-content-center" style="display: none;">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label id="q5-label" for="question-5"></label>
+                                    <input required type="number" value="" min="0" max="100000" oninput="validity.valid||(value='');" class="form-control" name="question-5" id="question-5">
+                                </div>
+                            </div> 
+
+                            <div id="q6" class="row justify-content-center" style="display: none;">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label id="q6-label" for="question-6"></label>
+                                    <input required type="number" value="" min="0" max="24" oninput="validity.valid||(value='');"  class="form-control" name="question-6" id="question-6">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div id="results" class="col-md-5 col-sm-5 mt-80" style="display: none;">
+                    <h2 class="fw-600 text-center mr-20">Cost Assessment</h2>
+                    <!-- NUM ELEVATOR SHAFTS FORM (READONLY) -->
+                    <form id="num-shafts-form" method="post" enctype="multipart/form-data">
+                        <fieldset>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label for="num-shafts">NUMBER OF ELEVATORS NEEDED</label>
+                                    <input readonly required type="number" value="" min="0" class="form-control" name="num-shafts" id="num-shafts">
+                                </div>
+                            </div> 
+                        </fieldset>
+                    </form>
+                    <h3 class="text-center fw-400">Choose a product line grade.</h3>
+                    <!-- PRICES FORM (READONLY) -->
+                    <form id="product-lines-form" method="post" action="quote/create" enctype="multipart/form-data">
+                        <fieldset>
+                            <div class="row justify-content-center ">
+                                <div class="radiodiv">
+                                    <input type="radio" id="standard" name="product-line" value="Standard" checked>
+                                    <label class="radio-label"for="standard">Standard</label><br>
+                                </div>
+                                <div class="radiodiv">
+                                    <input type="radio" id="premium" name="product-line" value="Premium">
+                                    <label class="radio-label" for="premium">Premium</label><br>
+                                </div>
+                                <div class="radiodiv">
+                                    <input type="radio" id="excelium" name="product-line" value="Excelium">
+                                    <label class="radio-label" for="excelium">Excelium</label><br>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label for="elevator-price">ELEVATOR COST</label>
+                                    <input readonly required type="text" value="$0.00" class="form-control" name="elevator-price" id="elevator-price">
+								</div>
+							</div>
+							<div class="row justify-content-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label for="installation-price">INSTALLATION COST</label>
+                                    <input readonly required type="text" value="$0.00" class="form-control" name="installation-price" id="installation-price">
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <label for="total-estimate">TOTAL COST ESTIMATE</label>
+                                    <input readonly required type="text" value="$0.00" class="form-control" name="total-estimate" id="total-estimate">
+                                </div>
+                            </div>
+							<div id="submit-quote-btn" class="row justify-content-center text-center">
+                                <div class="col-md-6 ml-20 mr-20">
+                                    <button type="submit" style="width: 100%" class="btn btn-primary"><i class="fa fa-check"></i>SUBMIT QUOTE</button>
+                                </div>
+                            </div> 
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+            <hr class="m-0" /><!-- 1px line separator -->
+            
+          
+							</form>
+
+<p>
+  <input name="commit" type="submit" value="Submit" />  </p>
 </body>
