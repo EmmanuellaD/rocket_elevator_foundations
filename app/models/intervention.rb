@@ -9,6 +9,4 @@ class Intervention < ApplicationRecord
 end
 
 
-def new
-  @interventions = Interventions.new
-end
+

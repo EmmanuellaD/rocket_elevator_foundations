@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
+  post 'createIntervention'=> "interventions#createIntervention"
   # post 'pages/twilio' => 'pages#twilio'
 end
 

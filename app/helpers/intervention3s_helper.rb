@@ -1,2 +1,0 @@
-module Intervention3sHelper
-end
