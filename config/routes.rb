@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :authors
   resources :interventions
   devise_for :admin_users, ActiveAdmin::Devise.config
   
@@ -30,13 +31,15 @@ Rails.application.routes.draw do
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'
   get 'admin_root' => 'map#index'
+  # get 'createIntervention'=> "interventions#createIntervention"
   
 
   # POST routes
 
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
-  post 'createIntervention'=> "interventions#createIntervention"
+  # post 'createIntervention'=> "interventions#createIntervention"
+  post 'intervention' => "interventions#create"
   # post 'pages/twilio' => 'pages#twilio'
 end
 

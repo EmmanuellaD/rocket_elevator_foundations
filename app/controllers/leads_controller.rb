@@ -43,7 +43,7 @@ class LeadsController < InheritedResources::Base
         format.json { render json: @lead, status: :created, location: @lead }
         
         #--------------Sendgrid ---------------------
-        SendgridMailer.send(@lead.email.to_s, {"contactfullname": @lead.contact_full_name, "projectname": @lead.project_name}, 'd-a315317e3530459ead2863577e7ebf5a')
+        SendgridMailer.send(@lead.email.to_s, {"contactfullname": @lead.contact_full_name, "projectname": @lead.project_name}, 'd-913a88d45dad41798231cf4288784794')
         #--------------Sendgrid ---------------------
 
       else

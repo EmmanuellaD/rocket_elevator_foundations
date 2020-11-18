@@ -12122,7 +12122,7 @@ add = [
 ]
 
 #seed the address table
-500.times do
+100.times do
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
