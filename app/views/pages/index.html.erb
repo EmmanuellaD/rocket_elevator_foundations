@@ -86,14 +86,15 @@
 											CONTACT
 										</a>
 									</li>
+									
 									<li><!-- admin -->
-										<a href = "/admin">
-											ADMIN
-										</a>
-									</li>
-									<li><!-- admin -->
-										<a href = "/intervention">
+									<% if current_author%>
+										<a href = "/interventions">
 											INTERVENTION
+										<%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
+											<%else%>
+										<%=link_to "LOGIN", new_author_session_path%>
+											<%end%>
 										</a>
 									</li>
 								</ul>

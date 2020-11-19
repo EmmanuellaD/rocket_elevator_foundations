@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
     after_create :dropbox
     after_update :dropbox
 
-   # belongs_to :user, optional:true
+    # belongs_to :user, optional:true
 
     has_many :buildings
     def display_name

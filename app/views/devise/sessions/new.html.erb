@@ -64,11 +64,7 @@
 											ADMIN
 										</a>
 									</li>
-									<li><!-- Intervention -->
-										<a href = "/interventions">
-											INTERVENTION
-										</a>
-									</li>
+									
 								</ul>
 
 							</nav>
@@ -95,6 +91,11 @@
       <%= f.label :remember_me %>
     </div>
   <% end %>
+  <% if current_admin_user%>
+<%= link_to 'Sign Out', destroy_author_session_path, method: :delete%>
+<%else%>
+<%=link_to "sign In", new_author_session_path%>
+<%end%>
 
   <div class="actions">
     <%= f.submit "Log in" %>

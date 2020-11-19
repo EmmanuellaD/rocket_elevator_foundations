@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   
+  get "interventions" => "interventions#index"
+  
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
   #admin_root ''
@@ -31,14 +34,14 @@ Rails.application.routes.draw do
   get 'residential' => 'pages#residential'
   get 'index' => 'pages#index'
   get 'admin_root' => 'map#index'
-  # get 'createIntervention'=> "interventions#createIntervention"
-  
+  get 'createIntervention'=> "interventions#createIntervention"
+ 
 
   # POST routes
 
   post 'quote/create' => 'quotes#create'
   post 'contact/create' => 'leads#create'
-  # post 'createIntervention'=> "interventions#createIntervention"
+  post 'createIntervention'=> "interventions#createIntervention"
   post 'intervention' => "interventions#create"
   # post 'pages/twilio' => 'pages#twilio'
 end

@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
     def access_denied(exception)
         redirect_to index_path, alert: exception.message
     end
+
+     def author_sign_in(resource)
+    if current_user && params[:interventions]
+      flash[:notice] = "Intervention submitted"
+      return params[:interventions]
+    end
+    super( resource ) 
+  end
 end

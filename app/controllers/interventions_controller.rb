@@ -2,8 +2,7 @@ class InterventionsController < ApplicationController
     def createIntervention      
 
     Intervention.create(
-    
-        # author_id: Employee.where(admin_user_id: current_admin_user.id),
+        author_id: Employee.where(admin_user_id: current_admin_user.id).first.id,
         customer_id: params[:selectcustomer],
         building_id: params[:selectbuilding],
         battery_id: params[:selectbattery],

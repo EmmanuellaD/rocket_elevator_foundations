@@ -64,11 +64,11 @@
 											ADMIN
 										</a>
 									</li>
-									<li><!-- Intervention -->
+									<%# <li><!-- Intervention -->
 										<a href = "/interventions">
 											INTERVENTION
 										</a>
-									</li>
+									</li> %>
 								</ul>
 
 							</nav>
@@ -80,31 +80,170 @@
 				<!-- /Top Nav -->
 
 
- <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12">
-                <%= form_with(url: "/intervention", :html => {:class => 'cartContent clearfix'} ) do %>
-                <fieldset>
-                    <div class="row">
-                        <div class="col-md-4"><label>Customer</label><%= select_tag('customer', options_from_collection_for_select(Customer.all, "id", "FullNameOfContact"), prompt: "--- Select ---", required: "required", class: "form-control pointer", id: 'customer-select') %></div>
-                        <div class="col-md-4"><label>Building</label><%= select_tag('building', options_for_select([['--- Select ---', '']]), required: "required", class: "form-control pointer", id: 'building-select') %></div>
-                        <div class="col-md-4"><label>Battery</label><%= select_tag('battery', options_for_select([['--- Select ---', '']]), required: "required", class: "form-control pointer", id: 'battery-select') %></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4"><label>Column</label><%= select_tag('column', options_for_select([['--- Select ---', '']]), required: "required", class: "form-control pointer", id: 'column-select') %></div>
-                        <div class="col-md-4"><label>Elevator</label><%= select_tag('elevator', options_for_select([['--- Select ---', '']]), required: "required", class: "form-control pointer", id: 'elevator-select') %></div>
-                        <div class="col-md-4"><label>Employee</label><%= select_tag('employee', options_from_collection_for_select(Employee.all, "id", "fullname"), prompt: "--- Select ---", required: "required", class: "form-control pointer", id: 'employee-select') %></div>
-                    </div>
-                    <div>
-                        <div class=col-md-12><label>Description</label><%= text_area_tag('report', nil, id: 'description', required: "required", class: "form-control", rows: 8, maxlength: 1000) %></div>
-                    </div>
-                    <hr />
-                </fieldset>
-                
-                <%= submit_tag("Submit", class: "btn btn-primary")  %>
-                <% end %>
-            </div>
-        </div>
+ 
+	<%= form_tag createIntervention_path, :id=> 'intervention', multipart: true do %>
+
+<div class="row">
+
+    <div class="col-md-4 l4 text-center selcust">
+	
+        <label for="selectcustomer">Customer*</label>
+        <select id="selectcustomer" class="form-control pointer" name="selectcustomer" required>
+        </select>
     </div>
+    <div class="col-md-4 text-center selbuild selform">
+        <label for="selectbuilding">Building*</label>
+        <select id="selectbuilding" class="form-control pointer" name="selectbuilding" required>
+        </select>
+    </div>
+    <div class="col-md-4 text-center selbatt selform">
+        <label for="selectbattery">Battery*</label>
+        <select id="selectbattery" class="form-control pointer" name="selectbattery" required>
+        </select>
+    </div>
+    <div class="col-md-4 text-center selcol selform">
+        <label for="selectcolumn">Column</label>
+        <select id="selectcolumn" class="form-control pointer" name="selectcolumn">
+        <option value="">None</option>
+        </select>
+    </div>
+    <div class="col-md-4 text-center selelev selform">
+        <label for="selectelevator">Elevator</label>
+        <select id="selectelevator" class="form-control pointer" name="selectelevator">
+        <option value="">None</option>
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 text-center selemp">
+        <label for="selectemployee">Employee:</label>
+        <select id="selectemployee" class="form-control pointer" name="selectemployee">
+        <option value="">None</option>
+        </select>
+    </div>
+    <div class="col-md-9 text-center seldesc">
+        <label for="selectdescription">Description</label>
+        <input type="text" placeholder="Description here" id="selectdescription" class="form-control pointer" name="selectdescription">
+    </div>
+    <br \>
+    <br \>
+</div>
+</h4>	
+<div class="row">
+    <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-red">SUBMIT</button>
+    </div>
+</div>
+<% end %>
+
 <script>
+
+
+// Functions to load the select dropdown fields
+function customerLoad() {
+    $("#selectcustomer").append("<option disabled selected>--Required--</option>")
+    <% Customer.all.each do |customer| %>
+        $("#selectcustomer").append("<option value='<%=customer.id%>'><%=customer.company_name%></option>")
+    <% end %>
+};
+function employeeLoad() {
+    $("#selectemployee").append("<option value='' selected>None</option>")
+    <% Employee.all.each do |employee| %>
+        $("#selectemployee").append("<option value='<%=employee.id%>'><%=employee.first_name%> <%=employee.last_name%></option>")
+    <% end %>
+};
+
+function buildingLoad() {
+    $("#selectbuilding").append("<option disabled selected>--Required--</option>")
+    <% Building.all.each do |building| %>
+    if ($('#selectcustomer').val() == <%=building.customer_id%>){
+        $("#selectbuilding").append("<option value='<%=building.id%>'><%=building.id%></option>")
+    }
+    <% end %>
+};
+
+function batteryLoad() {
+    $("#selectbattery").append("<option disabled selected>--Required--</option>")
+    <% Battery.all.each do |battery| %>
+    if ($('#selectbuilding').val() == <%=battery.building_id%>){
+        $("#selectbattery").append("<option value='<%=battery.id%>'>Battery #<%=battery.id%></option>")
+    }
+    <% end %>
+};
+
+function columnLoad() {
+    $("#selectcolumn").append("<option value='' selected>None</option>")
+    <% Column.all.each do |column| %>
+    if ($('#selectbattery').val() == <%=column.battery_id%>){
+        $("#selectcolumn").append("<option value='<%=column.id%>'>Column #<%=column.id%></option>")
+    }
+    <% end %>
+};
+
+function elevatorLoad() {
+    $("#selectelevator").append("<option value='' selected>None</option>")
+    <% Elevator.all.each do |elevator| %>
+    if ($('#selectcolumn').val() == <%=elevator.column_id%>){
+        $("#selectelevator").append("<option value='<%=elevator.id%>'>Elevator  #<%=elevator.id%></option>")
+    }
+    <% end %>
+};
+
+// functions to remove pre-populated fields
+
+function autoRemove(arg) {
+    $(arg).find('option').remove()
+};
+
+function autoRemoveAll() {
+    $('#intervention').find('option').remove()
+
+};
+function clearText() {
+        $('#selectdescription').val("")
+    }
+// On every page load, clears all and repopulates
+
+autoRemoveAll()
+clearText()
+customerLoad()
+employeeLoad()
+
+$(".selform").hide()
+
+// Event listeners that manipulate the select fields
+$('#selectcustomer').change(function(){
+    autoRemove('#selectbuilding')
+    autoRemove('#selectbattery')
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selform").hide()
+    $(".selbuild").show()
+    buildingLoad()
+});
+
+$('#selectbuilding').change(function(){
+    autoRemove('#selectbattery')
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selcol").hide()
+    $(".selelev").hide()
+    $(".selbatt").show()
+    batteryLoad()
+});
+
+$('#selectbattery').change(function(){
+    autoRemove('#selectcolumn')
+    autoRemove('#selectelevator')
+    $(".selelev").hide()
+    $(".selcol").show()
+    columnLoad()
+});
+
+$('#selectcolumn').change(function(){
+    autoRemove('#selectelevator')
+    $(".selelev").show()
+    elevatorLoad()
+});
+
+</script>

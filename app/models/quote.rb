@@ -2,7 +2,7 @@ class Quote < ApplicationRecord
     has_many :admin_users
     has_many :customers, through: :admin_users 
 
-    #after_create :create_new_quote_ticket
+    # after_create :create_new_quote_ticket
 
     # Creating the configuration
     # def create_new_quote_ticket
