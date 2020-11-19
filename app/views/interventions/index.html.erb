@@ -64,11 +64,14 @@
 											ADMIN
 										</a>
 									</li>
-									<%# <li><!-- Intervention -->
-										<a href = "/interventions">
-											INTERVENTION
+                                    <li><!-- logout -->
+									    <% if current_author%>
+										
+										<%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
+											
+											<%end%>
 										</a>
-									</li> %>
+									</li>
 								</ul>
 
 							</nav>

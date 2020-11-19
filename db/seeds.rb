@@ -29,12 +29,6 @@ Employee.create(first_name:"David", last_name:"Boutin", title:"Engineer", email:
 Employee.create(first_name:"Mathieu", last_name:"Lortie", title:"Engineer", email:"mathieu.lortie@codeboxx.biz", admin_user_id:8, phone_number:Faker::PhoneNumber.cell_phone)
 Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", email:"thomas.carrier@codeboxx.biz", admin_user_id:9, phone_number:Faker::PhoneNumber.cell_phone)
 
-# employRan = rand(1..7)
-
-# puts "-------------------------------------------------------------"
-# puts employRan
-# puts Employee.find(employRan)[:first_name] +" "+ Employee.find(employRan)[:last_name]
-# puts " ---------------------------------------------------------------------------------"
 
 addressType = ["Billing", "Shipping", "Home", "Business"]
 status = ["Inactive","Active"]
@@ -12122,7 +12116,7 @@ add = [
 ]
 
 #seed the address table
-100.times do
+500.times do
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
@@ -12198,9 +12192,9 @@ j=1
     users.save
 
     # creates a role variable with a 1 in 9 chance of being 0 the other value is 1
-    role = rand(0..4)
+    role = rand(0..9)
     if role > 2
-        role = 1
+         role = 1
     end
 
     # admin user id 10 will always have role 0
