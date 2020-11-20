@@ -8,8 +8,19 @@
 
 require "faker"
 
+Author.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Author.create!(email: 'emma@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Author.create!(email: 'codeboxx@example.com', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'nadya.fortier@codeboxx.biz', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'martin.chantal@codeboxx.biz', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'mathieu.houde@codeboxx.biz', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'david.boutin@codeboxx.biz', password: 'password', password_confirmation: 'password') 
+Author.create!(email: 'mathieu.lortie@codeboxx.biz', password: 'password', password_confirmation: 'password')
+Author.create!(email: 'thomas.carrier@codeboxx.biz', password: 'password', password_confirmation: 'password')
+
+
 
 AdminUser.create!(email: 'codeboxx@example.com', password: 'password', password_confirmation: 'password')
 AdminUser.create!(email: 'nicolas.genest@codeboxx.biz', password: 'password', password_confirmation: 'password')
@@ -31,8 +42,9 @@ Employee.create(first_name:"Thomas", last_name:"Carrier", title:"Engineer", emai
 
 
 addressType = ["Billing", "Shipping", "Home", "Business"]
-status = ["Inactive","Active"]
+status = ["Inactive","Active", "Intervention"]
 entity = ["Building", "Customer"]
+result = ["completed", "pending", "in progress"]
 
 # address list as array of objects
 add = [
@@ -12120,7 +12132,7 @@ add = [
     index = rand(0..add.length-1)
     addresses = Address.new(
         type_of_address: addressType[rand(0..3)],
-        status: status[rand(0..1)],
+        status: status[rand(0..2)],
         entity: entity[rand(0..1)],
         number_and_street: add[index][:address1],
         # number_and_street: add[1][0],
@@ -12141,7 +12153,7 @@ end
 
 
 
-# userID = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+userID = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
 
 
 buildingDetail = [
@@ -12188,13 +12200,14 @@ j=1
         email:eMail,
         password:"password",
         password_confirmation:"password"
+
     )
     users.save
 
     # creates a role variable with a 1 in 9 chance of being 0 the other value is 1
-    role = rand(0..9)
+    role = rand(0..4)
     if role > 2
-         role = 1
+        role = 1
     end
 
     # admin user id 10 will always have role 0
@@ -12442,6 +12455,8 @@ j=1
             end
         end
         j += 1
+
+        
     else # role is 0 and creates an employee
         employees = Employee.new(
             first_name: Faker::Name.first_name,
@@ -12454,9 +12469,12 @@ j=1
         )
         employees.save
     end
-    i = i+1
+      i = i+1
 
 end
+
+
+  
 
 200.times do
     leads = Lead.new(
@@ -12481,7 +12499,6 @@ end
     random = rand(0..5)
     contactName = Faker::Company.name
     contact_email = Faker::Internet.email
-    leadDate = Faker::Date.between(from: '2020-10-15', to: '2020-11-11')
 
     leads = Lead.new(
         contact_full_name: Faker::Name.name ,
@@ -12492,7 +12509,7 @@ end
         project_description: Faker::Lorem.sentence,
         department: typeBuilding[rand(0..3)],
         message: Faker::Lorem.paragraphs,
-        created_at: leadDate
+        created_at: Faker::Date.between(from: '2020-10-15', to: '2020-11-11')
         # attached_file:Faker::Types.rb_string 
 
 
@@ -12511,7 +12528,7 @@ end
         technicalAthorityID = Employee.where(title: "technician").last[:id]
         addressID = rand(1..Address.last[:id])
         companyName = contactName
-        customerDate = Faker::Date.between(from: leadDate, to: Date.today)
+        customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
         companyContact = Faker::Name.name
         companyPhone = Faker::PhoneNumber.cell_phone
         # companyPhone = "test"
@@ -12535,19 +12552,24 @@ end
             technical_manager_email: Employee.find(technicalAthorityID)[:email]
         )
         customers.save
-        p "___________________________________"
-        p "customer save"
-        p "___________________________________"
-
 
     end
-
+    
 end
+30.times do
+        interventions = Intervention.new(
+            employee_id:userID[rand(0..49)],
+            author_id: userID[rand(0..49)],
+            building_id: bcounter,
+            column_id: cCounter,
+            customer_id: j,
+            battery_id: batCounter,
+            result: result[rand(0..2)],
+            status: status[rand(0..1)],
+            report: Faker::Lorem.paragraphs,
 
-p "___________________________________"
-p "END SEED"
-p "___________________________________"
-
+)
+end
 
 
 

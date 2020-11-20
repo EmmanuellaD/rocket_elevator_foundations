@@ -66,11 +66,9 @@
 									</li>
                                     <li><!-- logout -->
 									    <% if current_author%>
+										    <%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
+										<%end%>
 										
-										<%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
-											
-											<%end%>
-										</a>
 									</li>
 								</ul>
 

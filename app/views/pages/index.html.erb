@@ -51,7 +51,7 @@
 
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="#home">
+										<a href="/index">
 											HOME
 										</a>
 									</li>
@@ -77,25 +77,25 @@
 										</a>
 									</li>
 									<li><!-- CLIENTS -->
-										<a href="#clients">
+										<a href="/clients">
 											CLIENTS
 										</a>
 									</li>
 									<li><!-- CONTACT -->
-										<a href="#contact">
+										<a href="/contact">
 											CONTACT
 										</a>
 									</li>
-									
+									<li>
+									 <a href = "/interventions">
+											INTERVENTION </a>
+									</li>
 									<li><!-- login -->
 									<% if current_author%>
-										<a href = "/interventions">
-											INTERVENTION
 										<%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
 											<%else%>
 										<%=link_to "LOGIN", new_author_session_path%>
 											<%end%>
-										</a>
 									</li>
 								</ul>
 

@@ -92,7 +92,7 @@
     </div>
   <% end %>
   <% if current_admin_user%>
-<%= link_to 'Sign Out', destroy_author_session_path, method: :delete%>
+<%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
 <%else%>
 <%=link_to "sign In", new_author_session_path%>
 <%end%>
