@@ -5,3 +5,6 @@
 //= link_tree ../stylesheets/fonts
 //= link_tree ../stylesheets/font
 //= link_tree ../audio
+
+//= link graphiql/rails/application.css
+//= link graphiql/rails/application.js

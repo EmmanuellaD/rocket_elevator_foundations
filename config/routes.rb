@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   devise_for :authors
   resources :interventions
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -43,6 +44,11 @@ Rails.application.routes.draw do
   post 'contact/create' => 'leads#create'
   post 'createIntervention'=> "interventions#createIntervention"
   post 'intervention' => "interventions#create"
+
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+  post "/graphql", to: "graphql#execute"
   # post 'pages/twilio' => 'pages#twilio'
 end
 

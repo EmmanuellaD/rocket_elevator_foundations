@@ -6,39 +6,30 @@ class Intervention < ApplicationRecord
   belongs_to :elevator, optional: true
   belongs_to :employee, optional: true
 
-   after_create :create_new_zendesk_ticket
-    def create_new_zendesk_ticket
-        client = ZendeskAPI::Client.new do |config|
-            config.url = ENV['ZENDESK_URL']
-            config.username = ENV['ZENDESK_USERNAME']
-            config.token = ENV['ZENDESK_TOKEN']
-        end
-        ZendeskAPI::Ticket.create!(client,
-            :subject => "New intervention created",
-            :comment => {
-                # :value => "New intervention created by employee ID: #{self.author},
-                :value => "New intervention created,
-                Customer ID: #{self.customer_id}
-                Building ID: #{self.battery_id}
-                Battery ID: #{self.battery_id}
-                Column ID: #{self.column_id}
-                Elevator ID: #{self.elevator_id}
-                Assigned to employee ID: #{self.employee_id}
+#    after_create :create_new_zendesk_ticket
+
+    def new_zendesk_intervention_ticket
+        ZendeskAPI::Ticket.create!($client, 
+            :subject => "New request", 
+            :comment => { 
+                :value => "New intervention created by employee ID: #{self.author},
+                Customer Id: #{self.customer_id}
+                Building Id: #{self.battery_id}
+                Battery Id: #{self.battery_id}
+                Column Id: #{self.column_id}
+                Elevator Id: #{self.elevator_id}
+                Employee Id: #{self.employee_id}
                 Description: #{self.report}
-                "
-            },
-            # :requester => {
-            #     "name": Employee.where(admin_user_id: self.author).first.first_name + " " + Employee.where(admin_user_id: self.author).first.last_name,
-            #     "email": Employee.where(admin_user_id: self.author).first.email
-            # },
-            :requester => {
-                "name": "Emmanuella",
-                "email": "emmanuella0524@yahoo.com"
+"
+            }, 
+            :requester => { 
+                "name": self.author_id, 
+                "email": self.email 
             },
             :priority => "normal",
             :type => "problem"
             )
-    end
+        end
 
 end
 

@@ -12556,20 +12556,19 @@ end
     end
     
 end
-30.times do
-        interventions = Intervention.new(
-            employee_id:userID[rand(0..49)],
+30.times{
+        Intervention.create(
             author_id: userID[rand(0..49)],
             building_id: bcounter,
             column_id: cCounter,
             customer_id: j,
             battery_id: batCounter,
+            employee_id:userID[rand(0..49)],
             result: result[rand(0..2)],
             status: status[rand(0..1)],
             report: Faker::Lorem.paragraphs,
 
-)
-end
+        )}
 
 
 

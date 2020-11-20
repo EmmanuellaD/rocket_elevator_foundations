@@ -179,6 +179,10 @@ GEM
     formtastic_i18n (0.6.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.11.6)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -465,6 +469,8 @@ DEPENDENCIES
   figaro
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
   font-awesome-sass (~> 4.3.0)
+  graphiql-rails
+  graphql
   http
   ibm_watson
   jbuilder (~> 2.5)

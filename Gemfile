@@ -128,3 +128,5 @@ gem 'ibm_watson'
 gem 'dropbox_api'
 
 gem 'rubocop-faker'
+gem 'graphql'
+gem 'graphiql-rails', group: :development
