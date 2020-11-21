@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'index' => 'pages#index'
   get 'admin_root' => 'map#index'
   get 'createIntervention'=> "interventions#createIntervention"
+  get 'intervention2'=> "pages#intervention2"
  
 
   # POST routes
@@ -44,11 +45,19 @@ Rails.application.routes.draw do
   post 'contact/create' => 'leads#create'
   post 'createIntervention'=> "interventions#createIntervention"
   post 'intervention' => "interventions#create"
+  post 'intervention2'=> "pages#intervention2"
+  
 
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
   post "/graphql", to: "graphql#execute"
   # post 'pages/twilio' => 'pages#twilio'
+
+scope :api do
+    get 'interventions', to: 'interventions#index'
+    put 'interventions', to: 'interventions#update'
+  end
+
 end
 

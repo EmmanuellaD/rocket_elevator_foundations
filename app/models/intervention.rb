@@ -7,6 +7,7 @@ class Intervention < ApplicationRecord
   belongs_to :employee, optional: true
 
     # after_create :create_new_zendesk_ticket
+    
 
     def create_new_zendesk_ticket
         client = ZendeskAPI::Client.new do |config|

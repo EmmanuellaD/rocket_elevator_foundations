@@ -1,7 +1,7 @@
 class InterventionsController < ApplicationController
+     before_action :intervention, only: :update
     def createIntervention      
         Intervention.create(
-            # author_id: Employee.where(admin_user_id: current_admin_user.id).first.id,
             author_id: params[:selectemployee],
             customer_id: params[:selectcustomer],
             building_id: params[:selectbuilding],
@@ -10,8 +10,25 @@ class InterventionsController < ApplicationController
             report: params[:descript],
             employee_id: params[:selectemployee],
             elevator_id: params[:selectelevator])
-    
+        
     end
-end
-def new
+
+    def index
+      interventions = Intervention.where("status = 'Pending'")
+
+      render json: interventions
+    end
+    def update
+        head :bad_request unless @intervention
+        @intervention.update({
+            status: params[:status],
+            start_date_intervention: params[:start_date_intervention],
+            end_date__intervention: params[:end_date_intervention]
+        })
+        render json: @intervention
+    end
+    private
+    def intervention
+        @intervention = Intervention.find_by(id: params[:intervention_id] )
+    end
 end
