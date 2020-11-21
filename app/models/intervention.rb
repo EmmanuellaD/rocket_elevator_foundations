@@ -6,32 +6,34 @@ class Intervention < ApplicationRecord
   belongs_to :elevator, optional: true
   belongs_to :employee, optional: true
 
-#    after_create :create_new_zendesk_ticket
+    # after_create :create_new_zendesk_ticket
 
-    def new_zendesk_intervention_ticket
-        ZendeskAPI::Ticket.create!($client, 
-            :subject => "New request", 
-            :comment => { 
-                :value => "New intervention created by employee ID: #{self.author},
-                Customer Id: #{self.customer_id}
-                Building Id: #{self.battery_id}
-                Battery Id: #{self.battery_id}
-                Column Id: #{self.column_id}
-                Elevator Id: #{self.elevator_id}
-                Employee Id: #{self.employee_id}
+    def create_new_zendesk_ticket
+        client = ZendeskAPI::Client.new do |config|
+            config.url = ENV['ZENDESK_URL']
+            config.username = ENV['ZENDESK_USERNAME']
+            config.token = ENV['ZENDESK_TOKEN']
+        end
+        ZendeskAPI::Ticket.create!(client,
+            :subject => "New intervention created",
+            :comment => {
+                :value => "New intervention created,
+                Customer id : #{self.customer_id}
+                Building id: #{self.battery_id}
+                Battery id: #{self.battery_id}
+                Column id: #{self.column_id}
+                Elevator id: #{self.elevator_id}
+                employee id: #{self.employee_id}
                 Description: #{self.report}
-"
-            }, 
-            :requester => { 
-                "name": self.author_id, 
-                "email": self.email 
+                "
             },
             :priority => "normal",
             :type => "problem"
             )
-        end
-
+    end
 end
+
+
 
 
 

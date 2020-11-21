@@ -41,11 +41,7 @@ class QuotesController < ApplicationController
 
         respond_to do |format|
             @quote.update!(quote_params)
-            # p '------------------'
-            # p '------------------'
-            # p @quote
-            # p '------------------'
-            # p '------------------'
+            
             if @quote.save 
                 format.html { redirect_to @quote, notice: "Save process completed!" }
                 format.json { render json: @quote, status: :created, location: @quote }

@@ -49,10 +49,10 @@ class Lead < ApplicationRecord
                     #{self.project_description}\n\n
                     Attached Message: #{self.message}"
             }, 
-            :requester => { 
-                "name": self.author_id, 
-                "email": self.email 
-            },
+            # :requester => { 
+            #     "name": self.contact_full_name, 
+            #     "email": self.email 
+            # },
             :priority => "normal",
             :type => "question"
             )
