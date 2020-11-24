@@ -500,7 +500,7 @@ DEPENDENCIES
   populator (~> 1.0)
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.4)
-  rspec (~> 3.0)
+  rspec
   rubocop-faker
   rvm1-capistrano3
   sass-rails (~> 5.0)

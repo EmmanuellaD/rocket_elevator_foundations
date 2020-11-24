@@ -130,4 +130,4 @@ gem 'dropbox_api'
 gem 'rubocop-faker'
 gem 'graphql'
 gem 'graphiql-rails', group: :development
-gem 'rspec', '~> 3.0'
+gem 'rspec'
