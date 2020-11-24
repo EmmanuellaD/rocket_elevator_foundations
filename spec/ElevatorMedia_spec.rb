@@ -26,7 +26,7 @@ describe 'ElevatorMedia' do
   describe  'changeJokeFormat' do
     it'extract joke' do
     media3= ElevatorMedia::Streamer.new
-    expect(media3.changeJokeFormat)
+    expect(media3.changeJokeFormat).to include('div')
     pp media3.changeJokeFormat
     end
   end
