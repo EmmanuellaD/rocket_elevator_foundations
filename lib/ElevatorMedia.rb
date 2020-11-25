@@ -15,11 +15,12 @@ module ElevatorMedia
             result=JSON.parse(response.read_body)['joke']
             return "<div><h3>Joke: #{result}</h3></div"
          end
-    end
-        def nextJokeButton
-            if button is_pressed?
-            return nextJoke
-            end
         end
     end
+    
+        def nextJokeButton
+            return nextJokeButton==true
+        end
+    
+
 

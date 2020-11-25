@@ -10,16 +10,19 @@ require 'uri'
 describe 'ElevatorMedia' do
   describe 'getContent' do
     it 'return specific joke'do
-      media2= ElevatorMedia::Streamer.new
-      expect(media2.getContent).to include("div")
-      pp (media2.getContent)
+      media= ElevatorMedia::Streamer.new
+      expect(media.getContent).to include("div")
+      pp (media.getContent)
     end
   end
-  describe 'nextJokeButton' do
-    it'should show the next joke on click' do
-      nextJoke= ElevatorMedia:Streamer.next
-      expect(nextJokeButton).to display
-    end
+  describe 'NextJokeButton' do
+      it "includes a link to new" do
+      media2= ElevatorMedia::Streamer.new
+      expect(media2).to be_truthy
+      # expect(NextJokeButton.request.path_parameters[:action]).to be_nil
+  end
+      # expect(nextJokeButton).to eq()
+
   end
 end
 

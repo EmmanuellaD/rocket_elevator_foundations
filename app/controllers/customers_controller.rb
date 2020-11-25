@@ -1,4 +1,6 @@
 class CustomersController < InheritedResources::Base
+  def create
+  end
 
   private
 

@@ -1,5 +1,12 @@
 
+<style>
+.marge {
+  width: auto;
+  margin-left: 100px;
 
+}
+</style>
+	
 	<!-- wrapper -->
 		<div id="wrapper">
 
@@ -81,35 +88,37 @@
 		instance = ElevatorMedia::Streamer.new
 		instance.getContent().html_safe		
 	%>	
-	<div class="row">
+	<div class="action row">
     <div class="col-md-12 text-center">
         <button type="submit" class="btn btn-red">NEXT JOKE</button>
     </div>
 	
 
-  <div class="field">
+  <div class="field marge">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="field marge">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field marge">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
+  <div  class= "marge">
   <% if current_admin_user%>
 <%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
 <%else%>
 <%=link_to "sign In", new_author_session_path%>
 <%end%>
+</div>
 
-  <div class="actions">
+  <div class="actions marge">
     <%= f.submit "Log in" %>
   </div>
   </div>
