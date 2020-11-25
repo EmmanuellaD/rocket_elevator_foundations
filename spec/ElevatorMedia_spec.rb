@@ -17,7 +17,8 @@ describe 'ElevatorMedia' do
   end
   describe 'nextJokeButton' do
     it'should show the next joke on click' do
-      expect(nextJokeButton)
+      nextJoke= ElevatorMedia:Streamer.next
+      expect(nextJokeButton).to display
     end
   end
 end

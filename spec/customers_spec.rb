@@ -16,7 +16,7 @@ RSpec.describe "Customers", type: :controller do
 
       def customer
          it'will be a customer' do
-            
+            expect(customer.company_contact).not_to be_nil
          end
       end
     end    
