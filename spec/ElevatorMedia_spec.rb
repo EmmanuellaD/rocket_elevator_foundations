@@ -8,26 +8,14 @@ require 'uri'
 
 
 describe 'ElevatorMedia' do
-    describe 'getContent' do
-     it 'should return' do
-        media = ElevatorMedia::Streamer.new
-        expect(media.getContent()).to be_a(String)
-        pp media.getContent()
-      end
-    end
-  end
-  describe 'apiRequest' do
+  describe 'getContent' do
     it 'return specific joke'do
       media2= ElevatorMedia::Streamer.new
-      expect(media2.apiTest)
-      pp media2.apiTest
+      expect(media2.getContent).to include("div")
+      pp (media2.getContent)
     end
   end
-  describe  'changeJokeFormat' do
-    it'extract joke' do
-    media3= ElevatorMedia::Streamer.new
-    expect(media3.changeJokeFormat).to include('div')
-    pp media3.changeJokeFormat
-    end
-  end
+end
+
+ 
   
