@@ -15,6 +15,11 @@ describe 'ElevatorMedia' do
       pp (media2.getContent)
     end
   end
+  describe 'nextJokeButton' do
+    it'should show the next joke on click' do
+      expect(nextJokeButton)
+    end
+  end
 end
 
  

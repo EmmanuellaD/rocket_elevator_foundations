@@ -16,5 +16,10 @@ module ElevatorMedia
             return "<div><h3>Joke: #{result}</h3></div"
          end
     end
-end
+        def nextJokeButton
+            if button is_pressed?
+            return nextJoke
+            end
+        end
+    end
 
