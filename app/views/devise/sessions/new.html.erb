@@ -82,7 +82,7 @@
 			</div>
 
 		
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), id:"login") do |f| %>
 	<%= 
 		require 'ElevatorMedia'
 		instance = ElevatorMedia::Streamer.new
@@ -113,13 +113,11 @@
   <div  class= "marge">
   <% if current_admin_user%>
 <%= link_to 'SIGN OUT', destroy_author_session_path, method: :delete%>
-<%else%>
-<%=link_to "sign In", new_author_session_path%>
 <%end%>
 </div>
 
   <div class="actions marge">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log In" %>
   </div>
   </div>
 <% end %>

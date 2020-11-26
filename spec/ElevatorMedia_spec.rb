@@ -16,12 +16,10 @@ describe 'ElevatorMedia' do
     end
   end
   describe 'NextJokeButton' do
-      it "includes a link to new" do
+    it "shows new joke when clicked" do
       media2= ElevatorMedia::Streamer.new
       expect(media2).to be_truthy
-      # expect(NextJokeButton.request.path_parameters[:action]).to be_nil
-  end
-      # expect(nextJokeButton).to eq()
+    end
 
   end
 end

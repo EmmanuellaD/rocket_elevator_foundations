@@ -14,15 +14,10 @@ RSpec.describe "Customers", type: :controller do
       technical_authority_phone: "techPhone", 
       technical_manager_email:"techEmail")
 
-    def validationTest 
-        it 'name must be present' do
-            expect(customer.full_name_company_contact).to eq(true)
-        end
-    end
+    
 
-      def customer
-         it'will be a customer' do
-            expect(customer.email_company_contact).not_to be_nil
-         end
-      end
-    end    
+    it'will be a customer' do
+      expect(newCustomer.email_company_contact).not_to be_nil
+    end
+  
+end    
