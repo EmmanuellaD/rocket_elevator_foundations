@@ -1,13 +1,13 @@
 # TDD - Week 10
 
-Folder /spec created and holding the spec test files
-File ElevatorMedia.rb contains the media streamer
-Implemented the joke in the intervention sign in page (views/devise/sessions/new.html.erb)
-Also completed in nodeJS as extra mile
+* Folder /spec created and holding the spec test files
+* File ElevatorMedia.rb contains the media streamer
+* Implemented the joke in the intervention sign in page (views/devise/sessions/new.html.erb)
+* Also completed in nodeJS as extra mile
 
 To run the tests:
--Run "rspec --format doc" to see the output of the rspec tests
--Run "yarn test" to see the output of the nodejs tests
+* Run "rspec --format doc" to see the output of the rspec tests
+* Run "yarn test" to see the output of the nodejs tests
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Consolidation - Week 9
