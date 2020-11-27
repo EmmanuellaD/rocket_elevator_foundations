@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@googlemaps/markerclustererplus": "^1.0.3",
+    "axios": "^0.21.0",
     "bootstrap": "4.3.1",
     "jquery": "^3.5.1",
     "popper": "1.0.1",
@@ -10,8 +11,14 @@
     "turbolinks": "5.2.0"
   },
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "ElevatorMedia.js",
   "repository": "git@github.com:EmmanuellaD/rocket_elevator_foundations.git",
   "author": "Emmanuellad <emmanuella0524@yahoo.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  }
 }
