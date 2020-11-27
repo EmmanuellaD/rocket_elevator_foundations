@@ -1,15 +1,19 @@
-# TEAM WEB-2 - Week 4 & 5 Odyssey 
+# TDD - Week 9
 
-## Website URL: (http://rocket-elevators-trevor.tk/)
+####Folder /spec created and holding the spec test files
+####File ElevatorMedia.rb conatins the media streamer
+####Implemented the joke in the intervention sign in page (views/devise/sessions/new.html.erb)
+####Also completed in nodeJS as extra mile
 
-# FALL-2020-TEAM-API-2 - Week 7 Odyssey 
-## Website URL: (https://vndaos.com/)
-### TEAM MEMBERS:
-- VIET-NGA DAO "Team Leader"
-- TREVOR KITCHEN "Member"
-- EMMANUELLA DERILUS "Member"
-- ANDRE DE SANTANA "Member"
-- JULIEN DUPONT "Member"
+##To run the tests:
+Run "rspec --format doc" to see the output of the rspec tests
+Run "yarn test" to see the output of the nodejs tests
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+# Consolidation - Week 9
+
+## Website URL: (http://emmanuellad.com)
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Week 8: Offering and Exposing a Service on the Internet
