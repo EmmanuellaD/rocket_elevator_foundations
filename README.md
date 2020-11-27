@@ -1,18 +1,23 @@
-# TDD - Week 9
+# TDD - Week 10
 
-####Folder /spec created and holding the spec test files
-####File ElevatorMedia.rb conatins the media streamer
-####Implemented the joke in the intervention sign in page (views/devise/sessions/new.html.erb)
-####Also completed in nodeJS as extra mile
+-Folder /spec created and holding the spec test files
+-File ElevatorMedia.rb conatins the media streamer
+-Implemented the joke in the intervention sign in page (views/devise/sessions/new.html.erb)
+-Also completed in nodeJS as extra mile
 
-##To run the tests:
-Run "rspec --format doc" to see the output of the rspec tests
-Run "yarn test" to see the output of the nodejs tests
+To run the tests:
+-Run "rspec --format doc" to see the output of the rspec tests
+-Run "yarn test" to see the output of the nodejs tests
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 # Consolidation - Week 9
 
 ## Website URL: (http://emmanuellad.com)
+This week, we created a new intervention page with a login as well as a new intervention table in the database that receives all new interventions. I was able to complete the rest API in ruby by creating a function "index" for GET method and function "update" for PUT method in the interventions_controller.rb. It can be access with this  url: https://emmanuellad.com/api/interventions
+
+To choose Body/form-data: Key:intervention_id => value:  Key:status => value: "" Key:start_date => value: "" Key:end_date => value: " " Then click SEND to update information.
+
+Using C# and .NET Core, restAPI in https://github.com/EmmanuellaD/rocket_foundation_REST_API.git
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
