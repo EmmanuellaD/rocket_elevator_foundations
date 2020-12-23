@@ -3,19 +3,11 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "15.223.134.140", user: "ubuntu", roles: %w{app db web}
+# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-app = ENV['APP']
-if app.nil? or app.empty?
-  app = "EmmanuellaDerilus" 
-end
-set :application, app
-set :rails_env, "development"
-set :bundle_without, "production"
-set :deploy_to, "/home/ubuntu/apps/#{app}"
-set :linked_dirs, %w{tmp/pids tmp/sockets log}
-set :linked_files, %w{config/database.yml config/database_second.yml config/application.yml}
+
+
 
 # role-based syntax
 # ==================
@@ -25,9 +17,9 @@ set :linked_files, %w{config/database.yml config/database_second.yml config/appl
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{ubuntu@15.223.134.140}
-role :web, %w{ubuntu@15.223.134.140}
-role :db,  %w{ubuntu@15.223.134.140}
+# role :app, %w{deploy@example.com}, my_property: :my_value
+# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
+# role :db,  %w{deploy@example.com}
 
 
 
@@ -50,7 +42,7 @@ role :db,  %w{ubuntu@15.223.134.140}
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    keys: %w(/home/user_name/.ssh/id_rsa),
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }

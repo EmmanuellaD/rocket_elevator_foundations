@@ -6,6 +6,8 @@ set :rvm_map_bins, [ 'rake', 'gem', 'bundle', 'ruby', 'puma', 'pumactl' ]
 set :application, "EmmanuellaDerilus"
 set :repo_url, "https://github.com/EmmanuellaD/rocket_elevator_foundations"
 
+# ssh_options[:forward_agent] = true
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
