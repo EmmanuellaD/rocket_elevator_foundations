@@ -92,6 +92,7 @@ gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'
 
 
 gem 'country_select', '~> 4.0'
+gem 'newrelic_rpm'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
 # gem 'therubyracer', :platforms => :ruby
