@@ -95,6 +95,7 @@ gem 'country_select', '~> 4.0'
 
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'therubyracer', :platforms => :ruby
+gem 'execjs'
 
 gem 'faker', '~> 2.14'
 
