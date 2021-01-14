@@ -83,15 +83,15 @@
 
 		
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), id:"login") do |f| %>
-	<%= 
-		require 'ElevatorMedia'
-		instance = ElevatorMedia::Streamer.new
-		instance.getContent().html_safe		
-	%>	
-	<div class="action row">
-    <div class="col-md-12 text-center">
-        <button type="submit" class="btn btn-red">NEXT JOKE</button>
-    </div>
+	# <%= 
+	# 	require 'ElevatorMedia'
+	# 	instance = ElevatorMedia::Streamer.new
+	# 	instance.getContent().html_safe		
+	# %>	
+	# <div class="action row">
+    # <div class="col-md-12 text-center">
+    #     <button type="submit" class="btn btn-red">NEXT JOKE</button>
+    # </div>
 	
 
   <div class="field marge">
